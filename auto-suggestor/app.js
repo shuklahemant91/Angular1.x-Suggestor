@@ -89,6 +89,7 @@ app.directive('autosuggest', function() {
 
                 }
                 listElem[0].style.display = "block";
+                listElem[0].scrollTop = 0;
                 scope.$apply()
             }
 
