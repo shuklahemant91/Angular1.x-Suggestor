@@ -36,9 +36,10 @@ app.directive('autosuggest', function() {
                 createList(inputElem.val());
 
             }).on('keydown', function(e) {
-                console.log('inside keydown')
-                if (e.keyCode == '40') {
 
+
+
+                if (e.keyCode == '40') { // down arrow key navigation
                     if (!activeNode) {
                         activeNode = listElem.find('li').eq(0);
                         activeNode.addClass('active');
@@ -49,14 +50,16 @@ app.directive('autosuggest', function() {
                         activeNode = activeNode.next();
                         activeNode.addClass('active');
                     }
-                } else if (e.keyCode == '38') {
+                    scrollList(e.keyCode, activeNode)
+                } else if (e.keyCode == '38') { // up arrow key navigation
 
                     if (!activeNode || !activeNode[0].previousElementSibling)
                         return;
                     listElem.find('li').removeClass('active');
                     activeNode = angular.element(activeNode[0].previousElementSibling);
                     activeNode.addClass('active');
-                } else if (e.keyCode == 13) {
+                    scrollList(e.keyCode, activeNode)
+                } else if (e.keyCode == 13) { // enter arrow key navigation
                     if (!activeNode) return;
                     scope.suggestor = activeNode.attr('val');
                     scope.$apply();
@@ -99,6 +102,21 @@ app.directive('autosuggest', function() {
                         scope.localObject.push(scope.autosuggestObj[i])
                     }
                 }
+            }
+
+
+
+            function scrollList(keyCode, activeElem) {
+                if (keyCode == '40') {
+                    if (activeElem[0].offsetTop + activeElem[0].offsetHeight > listElem[0].offsetHeight) {
+                        listElem[0].scrollTop = listElem[0].scrollTop + activeElem[0].offsetHeight
+                    }
+                }else {
+                    if (activeElem[0].offsetTop - listElem[0].scrollTop < activeElem[0].offsetHeight) {
+                        listElem[0].scrollTop = listElem[0].scrollTop - activeElem[0].offsetHeight
+                    }
+                }
+
             }
 
 

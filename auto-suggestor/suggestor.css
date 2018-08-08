@@ -1,0 +1,43 @@
+
+    .suggestor-container{
+    	position: relative;
+    }
+
+    .list-ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-width: 0 1px 1px 1px;
+        border-style: solid;
+        border-color: #ccc;
+        max-height: 200px;
+        overflow-y: scroll;
+        width: 191px;
+        position: relative;
+    }
+
+
+    ul.list-ul:empty {
+        display: none;
+        border: none
+    }
+
+    .list-li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .list-li.active, .list-li:hover{
+    	background-color: #ff0000;
+    	color: #fff;
+    	cursor: pointer
+    }
+
+    .list-li:last-child	 {
+        border: none
+    }
+
+    .input-suggestor{
+    	padding: 10px;
+    	outline: none
+    }
