@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css">
+
+
+    .suggestor-container{
+    	position: relative;
+    }
+
+    .list-ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border-width: 0 1px 1px 1px;
+        border-style: solid;
+        border-color: #ccc;
+        max-width: 200px;
+        overflow-y: scroll;
+    }
+
+
+    ul.list-ul:empty {
+        display: none;
+    }
+
+    .list-li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .list-li.active, .list-li:hover{
+    	background-color: #ff0000;
+    	color: #fff;
+    	cursor: pointer
+    }
+
+    .list-li:last-child	 {
+        border: none
+    }
+
+    .input-suggestor{
+    	padding: 10px;
+    	outline: none
+    }
+    </style>
+    <script type="text/javascript" src="angular.js"></script>
+</head>
+
+<body ng-app="demoApp">
+    <div ng-controller="demoCtrl">
+        <div autosuggest="drpDwnObject"></div>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
